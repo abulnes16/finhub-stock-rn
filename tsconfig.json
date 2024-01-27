@@ -2,16 +2,39 @@
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@hooks/*": ["./src/common/hooks/*"],
-      "@constants": ["./src/common/constants/index.ts"],
-      "@helpers/*": ["./src/common/helpers/*"],
-      "@navigation/*": ["./src/navigation/*"],
-      "@res/*": ["./src/res/*"],
-      "@screens/*": ["./src/screens/*"],
-      "@types/*": ["./src/types/*"],
-      "@store/*": ["./src/store/*"]
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@hooks/*": [
+        "./src/common/hooks/*"
+      ],
+      "@constants": [
+        "./src/common/constants/index.ts"
+      ],
+      "@helpers/*": [
+        "./src/common/helpers/*"
+      ],
+      "@navigation": [
+        "./src/navigation/index.ts"
+      ],
+      "@res/*": [
+        "./src/res/*"
+      ],
+      "@screens/*": [
+        "./src/screens/*"
+      ],
+      "types/*": [
+        "./src/types/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
+      ],
+      "@localization": [
+        "./src/common/localization/index.ts"
+      ],
+      "@theme/*": [
+        "./src/theme/*"
+      ]
     }
   }
 }
