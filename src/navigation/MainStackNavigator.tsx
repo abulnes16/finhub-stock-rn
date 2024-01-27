@@ -1,7 +1,8 @@
 import React from 'react'
-import AuthStackNavigator from './authentication/AuthStackNavigator'
 import { useAppSelector } from '@hooks/useStore'
 import { AuthenticationSelectors } from '@store/slices/authentication/slice'
+import HomeBottomTabsNavigator from './home/BottomTabsNavigator'
+import AuthStackNavigator from './authentication/AuthStackNavigator'
 
 const MainStackNavigator = () => {
 
@@ -13,7 +14,7 @@ const MainStackNavigator = () => {
     )
   }
 
-  return <></>
+  return <HomeBottomTabsNavigator />
 
 
 

@@ -4,4 +4,5 @@ export type AuthenticationParams = {
     WelcomeScreen: undefined
 }
 
-export type AuthenticationStackParams<T extends keyof AuthenticationParams> = NativeStackScreenProps<AuthenticationParams, T>
+export type AuthenticationStackParams<T extends keyof AuthenticationParams> =
+    NativeStackScreenProps<AuthenticationParams, T>
