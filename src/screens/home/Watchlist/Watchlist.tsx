@@ -18,7 +18,7 @@ const mockStocks: Stock[] = [
 
 const Watchlist = () => {
 
-  const watchlist = useWatchList();
+  //const watchlist = useWatchList();
 
 
   return (

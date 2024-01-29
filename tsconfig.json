@@ -34,6 +34,12 @@
       ],
       "@theme/*": [
         "./src/theme/*"
+      ],
+      "@api": [
+        "./src/api/index.ts"
+      ],
+      "@modules/*": [
+        "./src/common/modules/*"
       ]
     }
   }

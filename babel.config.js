@@ -17,7 +17,9 @@ module.exports = {
           "@store": "./src/store",
           "@localization": "./src/common/localization",
           "@theme": "./src/theme",
-          "@store": "./src/store"
+          "@store": "./src/store",
+          "@api": "./src/api",
+          "@modules": "./src/common/modules"
         },
       },
     ],

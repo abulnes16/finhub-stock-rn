@@ -4,3 +4,8 @@ export interface Stock {
   time: number
   volume: number
 }
+
+export interface PriceAlert {
+  symbol: string
+  price: number
+}

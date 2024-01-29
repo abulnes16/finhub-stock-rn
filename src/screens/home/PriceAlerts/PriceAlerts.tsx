@@ -1,19 +1,22 @@
 import React from 'react'
-import { FlatList, Image, View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import { Logo, Screen } from '@components/atoms'
-import { Button, Icon, Text } from '@ui-kitten/components'
+import { Button, Icon, Spinner, Text } from '@ui-kitten/components'
 import strings from '@localization'
 import { styles } from './PriceAlerts.style'
-import { AlertItem, EmptyState } from '@components/molecules'
+import { AlertItem, ResultState } from '@components/molecules'
 import { Images } from '@res/img'
 import { useNavigation } from '@react-navigation/native'
 import { AlertStackParams } from 'types/navigation'
+import { usePriceAlerts } from '@hooks/index'
 
 const PriceAlerts = () => {
 
   const { navigate } = useNavigation<AlertStackParams<"PriceAlertsScreen">["navigation"]>();
-
+  const { alerts, isLoadingAlerts, deleteAlert, loadingOperation } = usePriceAlerts();
   const onAddAlert = () => navigate("AddAlertsScreen");
+
+
 
   return (
     <Screen>
@@ -23,21 +26,29 @@ const PriceAlerts = () => {
         <Button onPress={onAddAlert} accessoryLeft={<Icon name='plus' />}>{strings.alerts.addAlert}</Button>
       </View>
 
-      <FlatList
-        data={[]}
-        renderItem={({ item }) => <AlertItem
-          name='BTC'
-          price={40}
-          onRemove={() => { }}
+
+      {isLoadingAlerts || loadingOperation ?
+        <Spinner />
+        : <FlatList
+          data={alerts}
+          renderItem={({ item }) =>
+            <AlertItem
+              name={item.symbol}
+              price={item.price}
+              onRemove={() => deleteAlert(item.symbol)}
+            />
+          }
+          ListEmptyComponent={() =>
+            <ResultState
+              image={Images.EmptyAlerts}
+              title={strings.alerts.emptyTitle}
+              subtitle={strings.alerts.emptySubtitle}
+            />
+          }
         />
-        }
-        ListEmptyComponent={() =>
-          <EmptyState
-            image={Images.EmptyAlerts}
-            title={strings.alerts.emptyTitle}
-            subtitle={strings.alerts.emptySubtitle}
-          />}
-      />
+      }
+
+
     </Screen>
   )
 }

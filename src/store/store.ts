@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
-import { AuthenticationReducer } from "./slices"
+import { AuthenticationReducer, AlertReducer, StockReducer } from "./slices"
 
 
 const reducer = combineReducers({
-  authentication: AuthenticationReducer
+  authentication: AuthenticationReducer,
+  alerts: AlertReducer,
+  stocks: StockReducer,
 })
 
 export const store = configureStore({

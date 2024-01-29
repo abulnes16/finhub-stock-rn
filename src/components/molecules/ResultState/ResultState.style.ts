@@ -20,5 +20,9 @@ export const styles = StyleSheet.create({
     maxWidth: 300,
     flexWrap: "wrap",
     alignSelf: "center",
+  },
+  actionButton: {
+    marginTop: Spacing.lg,
+    alignSelf: "center",
   }
 })

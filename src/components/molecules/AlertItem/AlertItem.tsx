@@ -25,7 +25,7 @@ const AlertItem = ({ name, price, onRemove }: AlertItemProps) => {
             <Text category='s2'>${price}</Text>
           </View>
         </View>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={onRemove} >
           <View style={[styles.removeButton, { backgroundColor: theme["color-danger-400"] }]}>
             <Icon name='close' fill={"white"} />
           </View>
