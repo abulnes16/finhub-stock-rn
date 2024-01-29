@@ -1,5 +1,5 @@
 import { finnhubApi } from "@api";
-import { getMonthName } from "@helpers/transformers";
+import Stocks from "@helpers/mappers/Stocks";
 import { HttpStatusCode } from "axios";
 import { useEffect, useState } from "react";
 import { StockHistory } from "types/general/entities";
@@ -24,24 +24,9 @@ const useStockHistory = (symbol: string) => {
       if (series.annual) {
         const { salesPerShare } = series.annual
 
-        const mappedChartData = salesPerShare.map((value) => {
-          const periodParts = value.period.split("-");
-          const month = Number(periodParts[1])
-          const monthName = getMonthName(month);
+        const stockChartHistory = Stocks.toStockChart(salesPerShare, metric)
 
-          return { monthName, value: value.v }
-        })
-
-
-
-        const monthName = mappedChartData[0].monthName
-        const values = mappedChartData.map(data => data.value);
-        setStockHistory({
-          month: monthName,
-          data: values,
-          labels: [],
-          metric
-        })
+        setStockHistory(stockChartHistory)
         return
       }
       setStockHistory(undefined)
