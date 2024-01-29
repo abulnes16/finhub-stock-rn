@@ -24,13 +24,13 @@ const useWatchList = () => {
     const finnhubWebSocket = new WebSocket(`wss://ws.finnhub.io?token=${Config.FINHUB_API_SECRET}`);
     finnhubWebSocket.onopen = () => {
       const subscribedStocks = stocksForWebSocket("subscribe")
-      subscribedStocks.forEach(stock => finnhubWebSocket.send(stock))
-      /* finnhubWebSocket.send(JSON.stringify({ type: "subscribe", symbol: "BINANCE:BTCUSDT" }))
-      finnhubWebSocket.send(JSON.stringify({ type: "subscribe", symbol: "BINANCE:ETHUSDT" })) */
+      /*   subscribedStocks.forEach(stock => finnhubWebSocket.send(stock)) */
+      finnhubWebSocket.send(JSON.stringify({ type: "subscribe", symbol: "BINANCE:BTCUSDT" }))
+      finnhubWebSocket.send(JSON.stringify({ type: "subscribe", symbol: "BINANCE:ETHUSDT" }))
 
     }
 
-    finnhubWebSocket.onmessage = (event) => {
+    finnhubWebSocket.onmessage = (event) => setTimeout(() => {
       const parsedData = JSON.parse(event.data);
       if (!parsedData) {
         return
@@ -47,7 +47,7 @@ const useWatchList = () => {
         processWebSocketResponse(stockData);
       }
 
-    }
+    }, 5000)
 
     finnhubWebSocket.onerror = (error) => {
       console.log(JSON.stringify(error, null, 2))
@@ -60,9 +60,12 @@ const useWatchList = () => {
 
     finnhubWebSocket.onclose = (event) => {
       const unsubscribeStocks = stocksForWebSocket("unsubscribe");
-      unsubscribeStocks.forEach(stock =>
-        finnhubWebSocket.send(stock)
-      )
+      /*  unsubscribeStocks.forEach(stock =>
+         finnhubWebSocket.send(stock)
+       ) */
+
+      finnhubWebSocket.send(JSON.stringify({ type: "unsubscribe", symbol: "BINANCE:BTCUSDT" }))
+      finnhubWebSocket.send(JSON.stringify({ type: "unsubscribe", symbol: "BINANCE:ETHUSDT" }))
     }
 
     return () => {

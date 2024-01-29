@@ -4,6 +4,7 @@ import { watchlist } from "./watchlist";
 import { alerts } from "./alerts";
 import { api } from "./api";
 import { profile } from './profile'
+import { stockHistory } from './stockHistory'
 
 export default {
   welcome,
@@ -11,5 +12,6 @@ export default {
   watchlist,
   alerts,
   api,
-  profile
+  profile,
+  stockHistory
 }

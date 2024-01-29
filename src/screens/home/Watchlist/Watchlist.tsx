@@ -30,19 +30,24 @@ const Watchlist = () => {
           watchedStocks.length !== 0 ?
             <View style={styles.header}>
               <Text category='h5'>{strings.watchlist.subtitle}</Text>
-            </View> : undefined
+            </View>
+            : undefined
         }
         data={watchedStocks}
         renderItem={
-          ({ item }) => <StockItem key={item.time} stock={item}
-          />
+          ({ item }) =>
+            <StockItem
+              key={item.time}
+              stock={item}
+            />
         }
         ListEmptyComponent={() =>
           <ResultState
             image={Images.EmptyAlerts}
             title={strings.watchlist.emptyWatchedStock}
             subtitle={strings.watchlist.emptyWatchedStockDescription}
-          />}
+          />
+        }
       />
     </Screen>
   )

@@ -7,13 +7,23 @@ import strings from '@localization'
 interface AlertItemProps {
   name: string
   price: number
-  onRemove: () => void
+  onPress: () => void
+  icon: string
+  iconColor?: string
+  iconBgColor?: string
 }
 
-const AlertItem = ({ name, price, onRemove }: AlertItemProps) => {
+const AlertItem = ({
+  name,
+  price,
+  onPress,
+  icon = "close",
+  iconColor = "white",
+  iconBgColor
+}: AlertItemProps) => {
 
   const theme = useTheme()
-
+  const backgroundColor = iconBgColor ?? theme["color-danger-400"]
   return (
     <Card >
       <View style={styles.item}>
@@ -25,9 +35,9 @@ const AlertItem = ({ name, price, onRemove }: AlertItemProps) => {
             <Text category='s2'>${price}</Text>
           </View>
         </View>
-        <TouchableOpacity onPress={onRemove} >
-          <View style={[styles.removeButton, { backgroundColor: theme["color-danger-400"] }]}>
-            <Icon name='close' fill={"white"} />
+        <TouchableOpacity onPress={onPress} >
+          <View style={[styles.removeButton, { backgroundColor }]}>
+            <Icon name={icon} fill={iconColor} />
           </View>
         </TouchableOpacity>
       </View>

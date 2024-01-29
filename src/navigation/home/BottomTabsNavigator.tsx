@@ -4,6 +4,7 @@ import { PriceAlertsScreen, ProfileScreen, StockHistoryScreen, WatchlistScreen }
 import { HomeParams } from 'types/navigation';
 import { BottomTabBar } from "@components/organisms";
 import AlertStackNavigator from "./AlertsStackNavigator";
+import StockHistoryNavigator from "./StockHistoryNavigator";
 
 const HomeTabs = createBottomTabNavigator<HomeParams>();
 
@@ -12,7 +13,7 @@ const HomeBottomTabsNavigator = () => {
     <HomeTabs.Navigator screenOptions={{ headerShown: false }} tabBar={props => <BottomTabBar {...props} />} >
       <HomeTabs.Screen name="PriceAlertStack" component={AlertStackNavigator} />
       <HomeTabs.Screen name="WatchlistScreen" component={WatchlistScreen} />
-      <HomeTabs.Screen name="StockHistoryScreen" component={StockHistoryScreen} />
+      <HomeTabs.Screen name="StockHistoryStack" component={StockHistoryNavigator} />
       <HomeTabs.Screen name="ProfileScreen" component={ProfileScreen} />
     </HomeTabs.Navigator>
   );

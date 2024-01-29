@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth0 } from 'react-native-auth0'
 import Toast from 'react-native-toast-message'
-import { Button } from '@ui-kitten/components'
+import { Button, Spinner } from '@ui-kitten/components'
 import { Logo, Screen } from '@components/atoms'
 import strings from '@localization'
 import { useAppDispatch } from '@hooks/useStore'
@@ -11,7 +11,7 @@ import { styles } from './WelcomeScreen.style'
 
 const WelcomeScreen = () => {
 
-  const { authorize } = useAuth0();
+  const { authorize, isLoading } = useAuth0();
   const dispatch = useAppDispatch();
 
   const onLogin = async () => {
@@ -34,7 +34,11 @@ const WelcomeScreen = () => {
   return (
     <Screen containerStyle={styles.screen}>
       <Logo />
-      <Button onPress={onLogin} style={styles.loginButton}>{strings.welcome.login}</Button>
+      {isLoading ? <Spinner /> : <Button
+        onPress={onLogin}
+        style={styles.loginButton}>
+        {strings.welcome.login}
+      </Button>}
     </Screen>
   )
 }

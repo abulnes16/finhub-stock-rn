@@ -1,6 +1,6 @@
 import axios, { Axios } from "axios";
 import Config from "react-native-config";
-import { StockSymbolAPI } from "types/api/api";
+import { StockHistoryAPI, StockSymbolAPI } from "types/api/api";
 
 class FinnhubApi {
 
@@ -15,6 +15,10 @@ class FinnhubApi {
 
   getStockSymbols(exchange: string = "US") {
     return this.client.get<StockSymbolAPI[]>(`/stock/symbol?exchange=${exchange}`)
+  }
+
+  getBasicFinancials(symbol: string) {
+    return this.client.get<StockHistoryAPI>(`/stock/metric?symbol=${symbol}&metric=all`)
   }
 
 

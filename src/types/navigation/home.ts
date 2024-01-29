@@ -6,12 +6,22 @@ export type AlertParams = {
   AddAlertsScreen: undefined
 }
 
+
 export type AlertStackParams<T extends keyof AlertParams> =
   NativeStackScreenProps<AlertParams, T>
 
+
+export type StockHistoryParams = {
+  StockHistoryScreen: undefined
+  StockChartScreen: { symbol: string }
+}
+
+export type StockHistoryStackParams<T extends keyof StockHistoryParams> =
+  NativeStackScreenProps<StockHistoryParams, T>
+
 export type HomeParams = {
   PriceAlertStack: undefined
-  StockHistoryScreen: undefined
+  StockHistoryStack: undefined
   WatchlistScreen: undefined
   ProfileScreen: undefined
 }

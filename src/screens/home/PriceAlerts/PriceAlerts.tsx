@@ -35,7 +35,8 @@ const PriceAlerts = () => {
             <AlertItem
               name={item.symbol}
               price={item.price}
-              onRemove={() => deleteAlert(item.symbol)}
+              icon='close'
+              onPress={() => deleteAlert(item.symbol)}
             />
           }
           ListEmptyComponent={() =>
