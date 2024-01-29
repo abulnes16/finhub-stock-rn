@@ -3,6 +3,7 @@ import { PriceAlert } from "types/general/entities";
 import { AlertsSlice } from "types/redux/alerts";
 import { loadAlerts } from "./thunks";
 import { RootState } from "@store/store";
+import React from "react";
 
 
 const initialState: AlertsSlice = {

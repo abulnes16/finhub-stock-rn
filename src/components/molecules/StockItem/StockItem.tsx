@@ -49,7 +49,7 @@ const StockItem = ({ stock, style, ...props }: StockItemProps) => {
       </View>
       <View style={styles.marginalChangeContainer}>
         <Icon style={styles.stockVolumeIcon} name={stockStatus.icon} fill={stockStatus.iconColor} />
-        <Text category='h5' status={stockStatus.status}>{stock.volume * 100}%</Text>
+        <Text category='h5' status={stockStatus.status}>{(stock.volume * 100).toFixed(2)}%</Text>
       </View>
     </Card>
   )

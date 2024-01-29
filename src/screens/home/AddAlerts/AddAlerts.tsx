@@ -103,13 +103,13 @@ const AddAlerts = () => {
         </View>
         <View style={styles.formContainer}>
           <Select
-            value={stockSelected?.displaySymbol}
+            value={stockSelected?.description}
             onSelect={index => setSelectedIndex(index as IndexPath)}
             selectedIndex={selectedIndex}
             placeholder={strings.alerts.stockToWatch}
             style={styles.verticalSpacing}
           >
-            {stockSymbols.map(symbol => <SelectItem key={symbol.symbol} title={symbol.displaySymbol} />)}
+            {stockSymbols.map(symbol => <SelectItem key={symbol.symbol} title={symbol.description} />)}
           </Select>
           <Input
             value={price}
