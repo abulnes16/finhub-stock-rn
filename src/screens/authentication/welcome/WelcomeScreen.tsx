@@ -1,14 +1,12 @@
 import React from 'react'
-import { Image } from 'react-native'
-import { Screen } from '@components/atoms'
-import { Images } from '@res/img'
-import { styles } from './WelcomeScreen.style'
-import { Button } from '@ui-kitten/components'
-import strings from '@localization'
 import { useAuth0 } from 'react-native-auth0'
 import Toast from 'react-native-toast-message'
+import { Button } from '@ui-kitten/components'
+import { Logo, Screen } from '@components/atoms'
+import strings from '@localization'
 import { useAppDispatch } from '@hooks/useStore'
 import { setAccessToken } from '@store/slices/authentication/slice'
+import { styles } from './WelcomeScreen.style'
 
 
 const WelcomeScreen = () => {
@@ -35,7 +33,7 @@ const WelcomeScreen = () => {
 
   return (
     <Screen containerStyle={styles.screen}>
-      <Image source={Images.Logo} style={styles.logo} />
+      <Logo />
       <Button onPress={onLogin} style={styles.loginButton}>{strings.welcome.login}</Button>
     </Screen>
   )

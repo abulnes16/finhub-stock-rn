@@ -1,9 +1,19 @@
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
+
+export type AlertParams = {
+  PriceAlertsScreen: undefined
+  AddAlertsScreen: undefined
+}
+
+export type AlertStackParams<T extends keyof AlertParams> =
+  NativeStackScreenProps<AlertParams, T>
 
 export type HomeParams = {
-  PriceAlertsScreen: undefined
+  PriceAlertStack: undefined
   StockHistoryScreen: undefined
   WatchlistScreen: undefined
+  ProfileScreen: undefined
 }
 
 

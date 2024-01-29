@@ -1,5 +1,6 @@
 export const navigation = {
   watchlistTab: "Watchlist",
   stockPriceHistoryTab: "History",
-  alertTab: "My Alerts"
+  alertTab: "My Alerts",
+  profileTab: "Profile"
 }

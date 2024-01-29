@@ -1,2 +1,2 @@
 export { default as Screen } from './Screen/Screen'
-export { default as NavigationIcon } from './NavigationIcon/NavigationIcon'
+export { default as Logo } from './Logo/Logo'

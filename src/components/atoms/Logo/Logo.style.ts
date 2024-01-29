@@ -3,10 +3,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   logo: {
-    marginTop: Spacing.md
-  },
-  header: {
+    alignSelf: "center",
     marginVertical: Spacing.md,
-    alignItems: "center"
-  }
+  },
 })
