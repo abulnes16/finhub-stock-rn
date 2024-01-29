@@ -20,7 +20,7 @@ const useWatchList = () => {
 
   const stocksForWebSocket = useCallback((type: "subscribe" | "unsubscribe") =>
     symbols.map(
-      symbol => JSON.stringify({ type, symbol: `${symbol}USDT` })
+      symbol => JSON.stringify({ type, symbol: `${symbol}` })
     ), [alertSymbols]
   );
 
@@ -31,9 +31,6 @@ const useWatchList = () => {
     finnhubWebSocket.onopen = () => {
       const subscribedStocks = stocksForWebSocket("subscribe")
       subscribedStocks.forEach(stock => finnhubWebSocket.send(stock))
-      /*  finnhubWebSocket.send(JSON.stringify({ type: "subscribe", symbol: "BINANCE:BTCUSDT" }))
-       finnhubWebSocket.send(JSON.stringify({ type: "subscribe", symbol: "BINANCE:ETHUSDT" })) */
-
     }
 
     finnhubWebSocket.onmessage = (event) => setTimeout(() => {
@@ -69,9 +66,6 @@ const useWatchList = () => {
       unsubscribeStocks.forEach(stock =>
         finnhubWebSocket.send(stock)
       )
-      /* 
-            finnhubWebSocket.send(JSON.stringify({ type: "unsubscribe", symbol: "BINANCE:BTCUSDT" }))
-            finnhubWebSocket.send(JSON.stringify({ type: "unsubscribe", symbol: "BINANCE:ETHUSDT" })) */
     }
 
     return () => {
