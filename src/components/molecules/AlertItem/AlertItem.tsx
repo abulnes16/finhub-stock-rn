@@ -25,10 +25,9 @@ const AlertItem = ({
   const theme = useTheme()
   const backgroundColor = iconBgColor ?? theme["color-danger-400"]
   return (
-    <Card >
+    <Card style={styles.itemContainer} >
       <View style={styles.item}>
         <View>
-
           <Text category='s1'>{name}</Text>
           <View style={styles.row}>
             <Text>{strings.alerts.price}: </Text>
