@@ -8,10 +8,16 @@ import { store } from "@store/store";
 import { StocksMapper } from "@helpers/mappers";
 import { Trade } from "types/api/websocket";
 import { Stock } from "types/general/entities";
+import { schedulePriceNotification } from "@helpers/transformers/stocks";
+import { useAppSelector } from "./useStore";
 
 const useWatchList = () => {
+
   const alertSymbols = createSelector([AlertsSelectors.getAlerts], (alerts) => alerts.map(alert => alert.symbol));
+  const alerts = useAppSelector(AlertsSelectors.getAlerts);
+
   const symbols = alertSymbols(store.getState())
+
   const stocksForWebSocket = useCallback((type: "subscribe" | "unsubscribe") =>
     symbols.map(
       symbol => JSON.stringify({ type, symbol: `${symbol}USDT` })
@@ -86,6 +92,9 @@ const useWatchList = () => {
 
       return false
     })
+
+    // Check for price alerts
+    schedulePriceNotification(cleanStocks, alerts)
 
     if (watchedStocks.length === 0) {
       setWatchedStocks(cleanStocks);
